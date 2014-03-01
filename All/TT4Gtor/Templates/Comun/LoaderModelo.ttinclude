@@ -1,0 +1,7 @@
+﻿<#@ IntelliSenseLanguage processor="tangibleT4Editor" language="C#" #>
+<#@ assembly name="C:\Users\Gustavo\Documents\Visual Studio 2012\Projects\T4\TT4Gtor-Versiones\All\TT4Gtor\ModelBuilder\bin\Debug\ModelBuilder.dll" #>
+
+<#+ 
+//List<ModelBuilder.Entidad> entidades = ModelBuilder.DatosPrueba.ObtenerEntidades();
+List<ModelBuilder.Entidad> entidades = ModelBuilder.DatosPrueba.Leer();
+#>

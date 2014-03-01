@@ -1,0 +1,129 @@
+﻿<#@ template debug="true" hostSpecific="true" #>
+<#@ output extension=".sql" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+
+CREATE PROCEDURE [<#= entidad.Tabla.Esquema#>].SP_Insertar<#= entidad.Tabla.Nombre #>
+	<# PushIndent("        ");#>
+	<# WriteParameterDeclarations(entidad); #> 
+AS
+	BEGIN
+		SET NOCOUNT ON;
+		BEGIN TRY        
+			SET @ErrorNum = -1;
+			INSERT INTO [<#= entidad.Tabla.Esquema#>].<#= entidad.Tabla.Nombre #> 
+			(				
+				<# WriteInsertClause(entidad); #>
+			) 
+			VALUES 
+			(
+				<# WriteValuesClause(entidad); #>
+			)
+			SET NOCOUNT ON
+			<# WriteOutputParameters(entidad); #>
+		END TRY
+		BEGIN CATCH
+			 SET @ErrorNum =(SELECT ERROR_NUMBER());        
+			 SET @ErrorMes=(SELECT ERROR_MESSAGE());
+		END CATCH
+	END
+<#+
+    /// <summary>
+	/// Writes stored procedure parameter declarations for all columns of the 
+	/// specified table. For IDENTITY and TIMESTAMP columns parameters are 
+	/// generated as OUTPUT in the end of parameter list.
+	/// </summary>
+	void WriteParameterDeclarations(ModelBuilder.Entidad entidad)
+	{
+	
+		int parameterIndex = 0;
+		
+		foreach(ModelBuilder.Atributo a in entidad.Atributos)
+        {
+			if (a.Campo.EsClavePrimaria)
+				continue;
+			
+			if (parameterIndex > 0)
+				WriteLine(",");
+			Write("@{0} {1}", a.Campo.Nombre, a.Campo.TipoDato);
+
+			parameterIndex++;
+		}
+
+		PopIndent();
+	}
+	/// <summary>
+	/// Writes list of column names for the INSERT statement
+	/// </summary>
+	void WriteInsertClause(ModelBuilder.Entidad entidad)
+	{
+		int columnIndex = 0;
+		
+		foreach(ModelBuilder.Atributo a in entidad.Atributos)
+        {
+			if (a.Campo.EsClavePrimaria)
+				continue;
+			
+			if (columnIndex > 0)
+				WriteLine(",");
+			Write("[{0}]", a.Campo.Nombre);
+
+			columnIndex++;
+		}
+		
+		Write("\r");
+		PopIndent();
+	}
+	/// <summary>
+	/// Writes list of parameter names for VALUES clause of the INSERT statement
+	/// </summary>
+	void WriteValuesClause(ModelBuilder.Entidad entidad)
+	{
+
+		int parameterIndex = 0;
+		
+		foreach(ModelBuilder.Atributo a in entidad.Atributos)
+        {
+			if (a.Campo.EsClavePrimaria)
+				continue;
+			
+			if (parameterIndex > 0)
+				WriteLine(",");
+			Write("@{0}", a.Campo.Nombre);
+
+			parameterIndex++;
+		}
+
+		Write("\r");
+	}
+
+	/// <summary>
+	/// Writes code that assigns value to OUTPUT parameters of the stored procedure.
+	/// </summary>
+	void WriteOutputParameters(ModelBuilder.Entidad entidad)
+	{
+		foreach(ModelBuilder.Atributo a in entidad.Atributos)
+		{
+			if (a.Campo.EsClavePrimaria)
+				WriteIdentityOutputParameter(a.Campo);
+		}
+	}
+
+	/// <summary>
+	/// Writes code that assigns value to OUTPUT parameter of the IDENTITY column.
+	/// </summary>
+	void WriteIdentityOutputParameter(ModelBuilder.Campo column)
+	{
+#>
+-- RETORNA EL VALOR DE LA NUEVA FILA <#= column.Nombre #> 
+			SET @<#= column.Nombre #> = SCOPE_IDENTITY()
+<#+
+	}
+#>
+
