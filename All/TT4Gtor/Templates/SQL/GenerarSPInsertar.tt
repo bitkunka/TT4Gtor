@@ -41,18 +41,31 @@ AS
 	/// </summary>
 	void WriteParameterDeclarations(ModelBuilder.Entidad entidad)
 	{
-	
+		
 		int parameterIndex = 0;
+		ModelBuilder.Campo clavePrimaria = null;
 		
 		foreach(ModelBuilder.Atributo a in entidad.Atributos)
         {
 			if (a.Campo.EsClavePrimaria)
+            {
+				clavePrimaria = a.Campo;
 				continue;
+            }
 			
 			if (parameterIndex > 0)
 				WriteLine(",");
 			Write("@{0} {1}", a.Campo.Nombre, a.Campo.TipoDato);
 
+			parameterIndex++;
+		}
+
+		// Write output parameter for identity column
+		if (clavePrimaria != null)
+		{
+			if (parameterIndex > 0)
+				WriteLine(",");
+			Write("@{0} {1} OUTPUT", clavePrimaria.Nombre, clavePrimaria.TipoDato);
 			parameterIndex++;
 		}
 
@@ -78,7 +91,6 @@ AS
 		}
 		
 		Write("\r");
-		PopIndent();
 	}
 	/// <summary>
 	/// Writes list of parameter names for VALUES clause of the INSERT statement

@@ -43,3 +43,26 @@ C:\Users\Gustavo\Documents\Visual Studio 2012\Projects\T4\TT4Gtor-Versiones\All\
 C:\Users\Gustavo\Documents\Visual Studio 2012\Projects\T4\TT4Gtor-Versiones\All\TT4Gtor\ModelCfg\obj\x86\Debug\ModelCfg.csproj.GenerateResource.Cache
 C:\Users\Gustavo\Documents\Visual Studio 2012\Projects\T4\TT4Gtor-Versiones\All\TT4Gtor\ModelCfg\obj\x86\Debug\ModelCfg.exe
 C:\Users\Gustavo\Documents\Visual Studio 2012\Projects\T4\TT4Gtor-Versiones\All\TT4Gtor\ModelCfg\obj\x86\Debug\ModelCfg.pdb
+C:\Users\Gustavo\Documents\GitHub\TT4Gtor\All\TT4Gtor\ModelCfg\bin\Debug\ModelCfg.exe.config
+C:\Users\Gustavo\Documents\GitHub\TT4Gtor\All\TT4Gtor\ModelCfg\bin\Debug\ModelCfg.exe
+C:\Users\Gustavo\Documents\GitHub\TT4Gtor\All\TT4Gtor\ModelCfg\bin\Debug\ModelCfg.pdb
+C:\Users\Gustavo\Documents\GitHub\TT4Gtor\All\TT4Gtor\ModelCfg\bin\Debug\ModelBuilder.dll
+C:\Users\Gustavo\Documents\GitHub\TT4Gtor\All\TT4Gtor\ModelCfg\bin\Debug\NPOI.dll
+C:\Users\Gustavo\Documents\GitHub\TT4Gtor\All\TT4Gtor\ModelCfg\bin\Debug\NPOI.HPSF.dll
+C:\Users\Gustavo\Documents\GitHub\TT4Gtor\All\TT4Gtor\ModelCfg\bin\Debug\NPOI.HSSF.dll
+C:\Users\Gustavo\Documents\GitHub\TT4Gtor\All\TT4Gtor\ModelCfg\bin\Debug\NPOI.POIFS.dll
+C:\Users\Gustavo\Documents\GitHub\TT4Gtor\All\TT4Gtor\ModelCfg\bin\Debug\NPOI.Util.dll
+C:\Users\Gustavo\Documents\GitHub\TT4Gtor\All\TT4Gtor\ModelCfg\bin\Debug\NPOI.DDF.dll
+C:\Users\Gustavo\Documents\GitHub\TT4Gtor\All\TT4Gtor\ModelCfg\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\Gustavo\Documents\GitHub\TT4Gtor\All\TT4Gtor\ModelCfg\bin\Debug\ModelBuilder.pdb
+C:\Users\Gustavo\Documents\GitHub\TT4Gtor\All\TT4Gtor\ModelCfg\bin\Debug\NPOI.xml
+C:\Users\Gustavo\Documents\GitHub\TT4Gtor\All\TT4Gtor\ModelCfg\bin\Debug\NPOI.HPSF.xml
+C:\Users\Gustavo\Documents\GitHub\TT4Gtor\All\TT4Gtor\ModelCfg\bin\Debug\NPOI.HSSF.xml
+C:\Users\Gustavo\Documents\GitHub\TT4Gtor\All\TT4Gtor\ModelCfg\bin\Debug\NPOI.POIFS.xml
+C:\Users\Gustavo\Documents\GitHub\TT4Gtor\All\TT4Gtor\ModelCfg\bin\Debug\NPOI.Util.xml
+C:\Users\Gustavo\Documents\GitHub\TT4Gtor\All\TT4Gtor\ModelCfg\bin\Debug\NPOI.DDF.xml
+C:\Users\Gustavo\Documents\GitHub\TT4Gtor\All\TT4Gtor\ModelCfg\obj\x86\Debug\ModelCfg.csprojResolveAssemblyReference.cache
+C:\Users\Gustavo\Documents\GitHub\TT4Gtor\All\TT4Gtor\ModelCfg\obj\x86\Debug\ModelCfg.Properties.Resources.resources
+C:\Users\Gustavo\Documents\GitHub\TT4Gtor\All\TT4Gtor\ModelCfg\obj\x86\Debug\ModelCfg.csproj.GenerateResource.Cache
+C:\Users\Gustavo\Documents\GitHub\TT4Gtor\All\TT4Gtor\ModelCfg\obj\x86\Debug\ModelCfg.exe
+C:\Users\Gustavo\Documents\GitHub\TT4Gtor\All\TT4Gtor\ModelCfg\obj\x86\Debug\ModelCfg.pdb

@@ -107,24 +107,33 @@ namespace ModelBuilder
 
             int? filaEncontrada;
 
+            int? indiceHoja;
+
             List<Entidad> entidades = new List<Entidad>();
             
             Entidad entidadLocalidad = new Entidad { Nombre = "Proveedor", Tabla = new Tabla { Nombre = "Suppliers", Esquema = "Suppliers" } };
 
             HSSFWorkbook workbook = ExcelHelper.OpenSampleWorkbook("test.xls");
 
-            var sheet = workbook.GetSheetAt(1);
+            indiceHoja = ExcelHelper.BuscarIndiceHoja(workbook, "Proveedor");
 
-            ExcelHelper.BuscarTextoEnHoja(sheet, 1, string.Format("ENTIDAD:{0}", entidad.ToUpper()), out filaEncontrada);
-
-            if (filaEncontrada != null)
+            if (indiceHoja != null)
             {
-                entidadLocalidad = CrearEntidadDesdeHoja(entidadLocalidad, (HSSFSheet)sheet, (int)filaEncontrada);
-            }
-            
-            entidades.Add(entidadLocalidad);
+                var sheet = workbook.GetSheetAt(1);
 
-            return  entidades;
+                ExcelHelper.BuscarTextoEnHoja(sheet, 1, string.Format("ENTIDAD:{0}", entidad.ToUpper()), out filaEncontrada);
+
+                if (filaEncontrada != null)
+                {
+                    entidadLocalidad = CrearEntidadDesdeHoja(entidadLocalidad, (HSSFSheet)sheet, (int)filaEncontrada);
+                }
+
+                entidades.Add(entidadLocalidad);
+
+                return entidades;
+            }
+
+            throw new Exception(string.Format("No se encontro configuracion para la entidad {0}", entidad));
         }
 
         #region Entidad

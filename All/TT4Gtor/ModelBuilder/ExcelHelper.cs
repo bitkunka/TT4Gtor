@@ -5,6 +5,8 @@ namespace ModelBuilder
     using System.IO;
     using System.Text;
     using NPOI.HSSF.UserModel;
+    using NPOI.HSSF.Model;
+    using System.Collections.Generic;
 
     public class ExcelHelper
     {
@@ -202,7 +204,7 @@ namespace ModelBuilder
             return bos.ToArray();
         }
 
-        #region Buscar Texto
+        #region Buscar 
 
         public static void BuscarTextoEnHoja(HSSFSheet hoja, int columna, string textoBuscado, out int? filaEncontrada)
         {
@@ -230,6 +232,22 @@ namespace ModelBuilder
                     }
                 }
             }
+        }
+
+        public static int? BuscarIndiceHoja(HSSFWorkbook libro, string nombreHoja)
+        {
+            var sheets = new List<Sheet>();
+
+            for (int i = 0; i < libro.NumberOfSheets; i++)
+            {
+                if (libro.GetSheetName(i).ToUpper() == nombreHoja.ToUpper())
+                {
+                    return i;
+                }
+            }
+
+            return null;
+
         }
 
         #endregion
